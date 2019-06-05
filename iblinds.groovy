@@ -82,6 +82,11 @@ metadata {
        	details(["blind", "levelval", "battery", "levelSliderControl",  "refresh"])
 
 	}
+    
+      preferences {
+        input name: "time", type: "time", title: "Check battery level every day at: ", description: "Enter time", required: true
+    }
+    
 }
 
 def parse(String description) {
@@ -231,8 +236,8 @@ def zwaveEvent(physicalgraph.zwave.commands.batteryv1.BatteryReport cmd) {
 def installed () {
     // When device is installed get battery level and set daily schedule for battery refresh
     log.debug "Installed, Set Get Battery Schedule"
-    runIn(15,getBattery) 
-    schedule(now(),getBattery)
+    runIn(60,getBattery) 
+    schedule("$time",getBattery)
     
 }
 
@@ -240,7 +245,7 @@ def updated () {
     // When device is updated get battery level and set daily schedule for battery refresh
     log.debug "Updated , Set Get Battery Schedule"
     runIn(15,getBattery) 
-    schedule(now(),getBattery)
+    schedule("$time",getBattery)
      
 }
 
