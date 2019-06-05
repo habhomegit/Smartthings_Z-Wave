@@ -7,7 +7,7 @@ This is a device driver for iBlinds.  iBlinds is an intelligent Z-Wave blind mot
 ## Installation
 
 1. First pair your device with the hub (see the SmartThings manual for pairing instructions)
-2. Open iBlinds_Demo4_DeviceHandler.groovy, select raw and it will open a new window with the code, select all (Ctrl+A) and copy the code (Ctrl+C)
+2. Open iblinds.groovy, select raw and it will open a new window with the code, select all (Ctrl+A) and copy the code (Ctrl+C)
 3. Login to your SmartThings IDE at https://graph.api.smartthings.com (create a login if you don't have one AND don't forget to opt-in for the developer account). To verify that you're logged into the correct location, after logging into the above link, click on "My Locations" and then click on the name of the location where you want to install the SmartApp. Note: You may be asked to log into your account again when you click on your location, if so login again.
 4. Click on "My Device Handlers"
 5. Click on "+New Device Handler" on the top right 
