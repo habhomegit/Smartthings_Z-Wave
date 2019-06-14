@@ -12,7 +12,7 @@
  *
  */
 metadata {
-	definition (name: "iBLidnds_Calibrate", namespace: "iBlinds", author: "HAB") {
+	definition (name: "iblinds", namespace: "iblinds", author: "HAB") {
 		capability "Switch Level"
 		capability "Actuator"
 		capability "Switch"
