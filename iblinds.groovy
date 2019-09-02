@@ -12,7 +12,7 @@
  *
  */
 metadata {
-	definition (name: "iBLidnds_Calibrate", namespace: "iBlinds", author: "HAB") {
+	definition (name: "iblinds", namespace: "iblinds", author: "HAB") {
 		capability "Switch Level"
 		capability "Actuator"
 		capability "Switch"
@@ -48,11 +48,10 @@ metadata {
 	tiles(scale: 2) {
 		multiAttributeTile(name:"blind", type: "lighting", width: 6, height: 4, canChangeIcon: true, canChangeBackground: true){
 			tileAttribute ("device.windowShade", key: "PRIMARY_CONTROL") {
-                attributeState "set level", label:'${name}', action:"refresh.refresh", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#ffa81e"
-				attributeState "open", label:'${name}', action:"switch.off", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#00B200", nextState:"closing"
-				attributeState "closed", label:'${name}', action:"switch.on", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#ffffff", nextState:"opening"
-				attributeState "opening", label:'${name}', action:"switch.off", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#00B200", nextState:"closing"
-				attributeState "closing", label:'${name}', action:"switch.on", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#ffffff", nextState:"opening"
+				attributeState "open", label:'${name}', action:"switch.off", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#00B200", nextState:"closing"
+				attributeState "closed", label:'${name}', action:"switch.on", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#ffffff", nextState:"opening"
+				attributeState "opening", label:'${name}', action:"switch.off", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#00B200", nextState:"closing"
+				attributeState "closing", label:'${name}', action:"switch.on", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#ffffff", nextState:"opening"
          
 			}
             
@@ -84,7 +83,9 @@ metadata {
 	}
     
       preferences {
-        input name: "time", type: "time", title: "Check battery level every day at: ", description: "Enter time", required: true
+        
+        input name: "time", type: "time", title: "Check battery level every day at: ", description: "Enter time", defaultValue: "2019-01-01T12:00:00.000-0600", required: true, displayDuringSetup: true
+        input name: "reverse", type: "bool", title: "Reverse", description: "Reverse Blind Direction", required: true
     }
     
 }
@@ -168,6 +169,7 @@ def zwaveEvent(physicalgraph.zwave.Command cmd) {
 
 def on() {
 	
+    
            sendEvent(name: "level", value: 50, unit: "%")
 	      
            sendEvent(name: "switch", value: "on")
@@ -179,19 +181,34 @@ def on() {
 
 def off() {
 				
-            sendEvent(name: "switch", value: "off")
+           if(reverse)
+           {
+           	sendEvent(name: "switch", value: "off")
+            sendEvent(name: "windowShade", value: "closed")
+            sendEvent(name: "level", value: 99, unit: "%")
+            zwave.switchMultilevelV2.switchMultilevelSet(value: 0x63).format()
+           }
+           else
+           {
+    		sendEvent(name: "switch", value: "off")
             sendEvent(name: "windowShade", value: "closed")
             sendEvent(name: "level", value: 0, unit: "%")
-           
-           zwave.switchMultilevelV2.switchMultilevelSet(value: 0x00).format()
-           // zwave.basicV1.basicSet(value: 0x00).format()    
+            zwave.switchMultilevelV2.switchMultilevelSet(value: 0x00).format()
+           } 
 }
 
 def setLevel(value) {
+  
+
 	log.debug "setLevel >> value: $value"
 	def valueaux = value as Integer
 	def level = Math.max(Math.min(valueaux, 99), 0)
 	
+      if(reverse)
+     {
+       level = 99 - level
+     }
+    
     if (level <= 0) {
     	 sendEvent(name: "switch", value: "off")
          sendEvent(name: "windowShade", value: "closed")
@@ -236,7 +253,7 @@ def zwaveEvent(physicalgraph.zwave.commands.batteryv1.BatteryReport cmd) {
 def installed () {
     // When device is installed get battery level and set daily schedule for battery refresh
     log.debug "Installed, Set Get Battery Schedule"
-    runIn(60,getBattery) 
+    runIn(15,getBattery) 
     schedule("$time",getBattery)
     
 }
@@ -259,8 +276,13 @@ def refresh() {
 
 def getBattery() {
     log.debug  "get battery level"
-    zwave.batteryV1.batteryGet().format()
+    // Use sendHubCommand to get battery level 
+    def cmd = []
+    cmd << new physicalgraph.device.HubAction(zwave.batteryV1.batteryGet().format())
+    sendHubCommand(cmd)
+    
 }
+
 
 /* The configure method is an advanced feature to launch calibration from the SmartThings App.
 **** USE AT YOUR OWN RISK ****
@@ -292,5 +314,4 @@ def configure() {
        log.debug "Configuration tile pushed"
        zwave.configurationV2.configurationSet(parameterNumber: 1, size: 1, configurationValue: [1]).format()      
 }
-*/ 
-
+*/
