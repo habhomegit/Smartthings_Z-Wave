@@ -48,19 +48,10 @@ metadata {
 	tiles(scale: 2) {
 		multiAttributeTile(name:"blind", type: "lighting", width: 6, height: 4, canChangeIcon: true, canChangeBackground: true){
 			tileAttribute ("device.windowShade", key: "PRIMARY_CONTROL") {
-<<<<<<< HEAD
 				attributeState "open", label:'${name}', action:"switch.off", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#00B200", nextState:"closing"
 				attributeState "closed", label:'${name}', action:"switch.on", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#ffffff", nextState:"opening"
 				attributeState "opening", label:'${name}', action:"switch.off", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#00B200", nextState:"closing"
-				attributeState "closing", label:'${name}', action:"switch.on", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#ffffff", nextState:"opening"
-=======
-                attributeState "calibrate", label:'${name}', action:"refresh.refresh", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#ffa81e"
-				attributeState "open", label:'${name}', action:"switch.off", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#00B200", nextState:"closing"
-				attributeState "closed", label:'${name}', action:"switch.on", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#ffffff", nextState:"opening"
-				attributeState "opening", label:'${name}', action:"switch.off", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#00B200", nextState:"closing"
-				attributeState "closing", label:'${name}', action:"switch.on", icon:"http://myiblinds.com/icons/blind2.png", backgroundColor:"#ffffff", nextState:"opening"
->>>>>>> 5681f1aa8e015f1587ba30d9e76a227342ddf001
-         
+				attributeState "closing", label:'${name}', action:"switch.on", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#ffffff", nextState:"opening" 
 			}
             
             tileAttribute ("device.level", key: "SLIDER_CONTROL") {
@@ -93,11 +84,8 @@ metadata {
       preferences {
         
         input name: "time", type: "time", title: "Check battery level every day at: ", description: "Enter time", defaultValue: "2019-01-01T12:00:00.000-0600", required: true, displayDuringSetup: true
-<<<<<<< HEAD
         input name: "reverse", type: "bool", title: "Reverse", description: "Reverse Blind Direction", required: true
-=======
->>>>>>> 5681f1aa8e015f1587ba30d9e76a227342ddf001
-    }
+ }
     
 }
 
