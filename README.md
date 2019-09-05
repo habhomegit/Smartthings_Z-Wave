@@ -21,7 +21,7 @@ This is a device driver for iBlinds.  iBlinds is an intelligent Z-Wave blind mot
 13. Scroll to the bottom of the page and click "Update"
 14. Open the SmartThings App on your phone and under "My Home" look for your new device
 
-Note: If you are using an older version of the Device Handler you will be required to use the value slider to initate the calibrate process the first time you use the device.
+Note: If you are using an older version of the Device Handler you will be required to use the value slider to initiate the calibrate process the first time you use the device.
 
 ## Credits
 
