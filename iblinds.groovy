@@ -48,10 +48,10 @@ metadata {
 	tiles(scale: 2) {
 		multiAttributeTile(name:"blind", type: "lighting", width: 6, height: 4, canChangeIcon: true, canChangeBackground: true){
 			tileAttribute ("device.windowShade", key: "PRIMARY_CONTROL") {
-				attributeState "open", label:'${name}', action:"switch.off", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#00B200", nextState:"closing"
-				attributeState "closed", label:'${name}', action:"switch.on", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#ffffff", nextState:"opening"
-				attributeState "opening", label:'${name}', action:"switch.off", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#00B200", nextState:"closing"
-				attributeState "closing", label:'${name}', action:"switch.on", icon:"http://cdn.device-icons.smartthings.com/Home/home9-icn@2x.png", backgroundColor:"#ffffff", nextState:"opening" 
+				attributeState "open", label:'${name}', action:"switch.off", icon:"https://raw.githubusercontent.com/habhomegit/Smartthings_Z-Wave/master/blind.png", backgroundColor:"#00B200", nextState:"closing"
+				attributeState "closed", label:'${name}', action:"switch.on", icon:"https://raw.githubusercontent.com/habhomegit/Smartthings_Z-Wave/master/blind.png", backgroundColor:"#ffffff", nextState:"opening"
+				attributeState "opening", label:'${name}', action:"switch.off", icon:"https://raw.githubusercontent.com/habhomegit/Smartthings_Z-Wave/master/blind.png", backgroundColor:"#00B200", nextState:"closing"
+				attributeState "closing", label:'${name}', action:"switch.on", icon:"https://raw.githubusercontent.com/habhomegit/Smartthings_Z-Wave/master/blind.png", backgroundColor:"#ffffff", nextState:"opening" 
 			}
             
             tileAttribute ("device.level", key: "SLIDER_CONTROL") {
