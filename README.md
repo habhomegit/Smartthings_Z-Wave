@@ -2,7 +2,7 @@
 
 This is a device driver for iBlinds.  iBlinds is an intelligent Z-Wave blind motor that installs out of sight in existing Venetian (2" and 2 1/2" slatted-style) blind headrails. Use iblinds to tilt the slats open, closed or use the value slider for precise positioning of the slat tilt angle
 
-<img src="http://myiblinds.com/icons/Screenshot_Android.png" width="200" height="350" />
+<img src="https://github.com/habhomegit/Smartthings_Z-Wave/blob/master/Screenshot_Android.png" width="200" height="350" />
 
 ## Installation
 
@@ -21,6 +21,7 @@ This is a device driver for iBlinds.  iBlinds is an intelligent Z-Wave blind mot
 13. Scroll to the bottom of the page and click "Update"
 14. Open the SmartThings App on your phone and under "My Home" look for your new device
 
+Note: The first time you open the device it will display calibrate even if you have manually calibrated. Use the value slider to calibrate position the blinds the first time.
 
 ## Credits
 
