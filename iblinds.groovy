@@ -202,7 +202,7 @@ def setLevel(value) {
 	log.debug "setLevel >> value: $value"
 	def valueaux = value as Integer
 	def level = Math.max(Math.min(valueaux, 99), 0)
-	
+	valueaux=level
       if(reverse)
      {
        level = 99 - level
@@ -221,7 +221,7 @@ def setLevel(value) {
          sendEvent(name: "windowShade", value: "closed")
     } 
  
-	sendEvent(name: "level", value: level, unit: "%")
+	sendEvent(name: "level", value: valueaux, unit: "%")
     zwave.switchMultilevelV2.switchMultilevelSet(value: level).format()
     //zwave.basicV1.basicSet(value: level).format()
     
@@ -231,6 +231,11 @@ def setLevel(value, duration) {
 	log.debug "setLevel >> value: $value, duration: $duration"
 	def valueaux = value as Integer
 	def level = Math.max(Math.min(valueaux, 99), 0)
+     if(reverse)
+     {
+       level = 99 - level
+     }
+    
 	def dimmingDuration = duration < 128 ? duration : 128 + Math.round(duration / 60)
 	def getStatusDelay = duration < 128 ? (duration*1000)+2000 : (Math.round(duration / 60)*60*1000)+2000
 	zwave.switchMultilevelV2.switchMultilevelSet(value: level, dimmingDuration: dimmingDuration).format()
