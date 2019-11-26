@@ -9,9 +9,6 @@
  *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
  *  for the specific language governing permissions and limitations under the License.
- * Change Log 
- * V1.02  -  Added Reverse Option             - Eric B  09-02-2019
- * V1.03  -  Added Open % Value user option   - Eric B  11-25-2019
  *
  */
 metadata {
@@ -88,7 +85,6 @@ metadata {
         
         input name: "time", type: "time", title: "Check battery level every day at: ", description: "Enter time", defaultValue: "2019-01-01T12:00:00.000-0600", required: true, displayDuringSetup: true
         input name: "reverse", type: "bool", title: "Reverse", description: "Reverse Blind Direction", required: true
-		input name: "openLevel",type: "number", title: "Open Level", description: "Open % Level", defaultValue: "50",  required: true
  }
     
 }
@@ -172,14 +168,14 @@ def zwaveEvent(physicalgraph.zwave.Command cmd) {
 
 def on() {
 	
-           // New On Method, Let user select On value in preferences, then send value to the setLevel Method 
-		   setLevel(openLevel)
-
-           // Old On Method
-           //sendEvent(name: "level", value: 50, unit: "%")
-           //sendEvent(name: "switch", value: "on")
-           //sendEvent(name: "windowShade", value: "open")
-           //zwave.switchMultilevelV2.switchMultilevelSet(value: 0x32).format()
+    
+           sendEvent(name: "level", value: 50, unit: "%")
+	      
+           sendEvent(name: "switch", value: "on")
+           sendEvent(name: "windowShade", value: "open")
+          
+           zwave.switchMultilevelV2.switchMultilevelSet(value: 0x32).format()
+           //zwave.basicV1.basicSet(value: 0x32).format()
 }
 
 def off() {
