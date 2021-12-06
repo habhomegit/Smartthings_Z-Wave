@@ -366,5 +366,5 @@ def getBattery() {
 }
 
 def isV3Device() {
-	zwaveInfo.mfr == "0287" && zwaveInfo.prod == "0004" && zwaveInfo.model == "0071"
+	zwaveInfo.mfr == "0287" && zwaveInfo.prod == "0004" && (zwaveInfo.model == "0071" ||  zwaveInfo.model == "0072")
 }
