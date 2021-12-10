@@ -350,7 +350,7 @@ def configureParams() {
 		}
 		if ( state.param11 != MultiChange ) {
 			def MultiChange = boolToInteger(MultiChange)
-			cmds << zwave.configurationV1.configurationSet(parameterNumber: 11, size: 1, configurationValue: MultiChange.toInteger()]).format()  
+			cmds << zwave.configurationV1.configurationSet(parameterNumber: 11, size: 1, configurationValue: [MultiChange.toInteger()]).format()  
 		}	
 
 
@@ -391,5 +391,5 @@ def getBattery() {
 }
 
 def isV3Device() {
-	zwaveInfo.mfr == "0287" && zwaveInfo.prod == "0004" && zwaveInfo.model == "0071"
+	zwaveInfo.mfr == "0287" && zwaveInfo.prod == "0004" && (zwaveInfo.model == "0071" || zwaveInfo.model == "0072")
 }
