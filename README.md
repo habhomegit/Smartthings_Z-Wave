@@ -38,3 +38,10 @@ http://www.apache.org/licenses/
 # iBlinds Z-Wave Four Button Controller Device Handler
 
 This custom iblinds Z-wave Plus Four-Button Scene Controller is a battery-powered remote manufactured by Hank. Using a Z-Wave hub you can control multiple devices within a network by just pressing the buttons. It's programmable so that you can always program the button controller based on your needs. You can control up to 4 scenes with a single remote. 
+
+This Device handler will support the following Models from Hank Tech and Aeotec
+ Hank Scene Controller/Hank Four-Key Scene Controller
+ (Models: HKZW-SCN01/HKZW-SCN04)
+
+ Aeotec NanoMote One/Quad 
+ (Models: ZWA003-A/ZWA004-A)
