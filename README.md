@@ -41,8 +41,8 @@ This custom iblinds Z-wave Plus Four-Button Scene Controller is a battery-powere
 
 This Device handler will support the following Models from Hank Tech and Aeotec. 
 
-###Hank Scene Controller/Hank Four-Key Scene Controller
+-Hank Scene Controller/Hank Four-Key Scene Controller
 (Models: HKZW-SCN01/HKZW-SCN04) 
 
-###Aeotec NanoMote One/Quad 
+-Aeotec NanoMote One/Quad 
 (Models: ZWA003-A/ZWA004-A)
