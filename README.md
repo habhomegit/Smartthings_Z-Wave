@@ -25,15 +25,6 @@ This is a device driver for iBlinds.  iBlinds is an intelligent Z-Wave blind mot
 
 Note: If you are using an older version of the Device Handler you will be required to use the value slider to initiate the calibrate process the first time you use the device.
 
-## Credits
-
-Eric Barnett
-Chance Huddleston
-
-## License
-
-Apache 2.0
-http://www.apache.org/licenses/
 
 # iBlinds Z-Wave Four Button Controller Device Handler
 
@@ -46,3 +37,14 @@ This Device handler will support the following Models from Hank Tech and Aeotec.
 
 -Aeotec NanoMote One/Quad 
 (Models: ZWA003-A/ZWA004-A)
+
+
+## Credits
+
+Eric Barnett
+Chance Huddleston
+
+## License
+
+Apache 2.0
+http://www.apache.org/licenses/
