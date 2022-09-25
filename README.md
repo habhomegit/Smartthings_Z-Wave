@@ -1,4 +1,4 @@
-# iBlinds SmartThings Device Handler
+# iBlinds SmartThings Blind Device Handler
 
 This is a device driver for iBlinds.  iBlinds is an intelligent Z-Wave blind motor that installs out of sight in existing Venetian (2" and 2 1/2" slatted-style) blind headrails. Use iblinds to tilt the slats open, closed or use the value slider for precise positioning of the slat tilt angle
 
@@ -34,3 +34,7 @@ Chance Huddleston
 
 Apache 2.0
 http://www.apache.org/licenses/
+
+# iBlinds Z-Wave Four Button Controller Device Handler
+
+This custom iblinds Z-wave Plus Four-Button Scene Controller is a battery-powered remote manufactured by Hank. Using a Z-Wave hub you can control multiple devices within a network by just pressing the buttons. It's programmable so that you can always program the button controller based on your needs. You can control up to 4 scenes with a single remote. 
